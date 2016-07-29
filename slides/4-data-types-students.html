@@ -26,7 +26,7 @@
       // Slide settings
       settings: {
                 title: 'R Programming',
-                        subtitle: 'Get me some data!',
+                        subtitle: 'Wait, there are different types of data?',
                 useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -106,347 +106,572 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">August 6, 2016</p>
           </hgroup>
   </slide>
 
-<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Key Things to Know</h2></hgroup><article  id="key-things-to-know" class="smaller ">
+<slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Key Things to Remember</h2></hgroup><article  id="key-things-to-remember" class="smaller ">
 
 </article></slide><slide class=''><hgroup><h2>What to Remember from this Section</h2></hgroup><article  id="what-to-remember-from-this-section" class="smaller ">
 
-<p><br><br></p>
-
-<ol>
-<li>Lots of built-in data sets provided by R</li>
-<li>Text files use delimiters - these determine the function to read in the data</li>
-<li>There is no base R function to read in Excel data - must use a package</li>
-<li>Web scraping is a dense subject but scraping online text/Excel files <em>can</em> be as easy as reading in these files from your hard drive</li>
-</ol>
-
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Built-in Data</h2></hgroup><article  id="built-in-data" class="smaller ">
-
-</article></slide><slide class=''><hgroup><h2>Built-in Data Sets</h2></hgroup><article  id="built-in-data-sets" class="smaller ">
-
 <ul>
-<li>R has many built-in data sets</li>
-<li>type <code>data()</code> into your console (104 data sets should appear)</li>
+<li>R has the ability to work with a variety of data <em>types</em></li>
+<li>As an analyst, you should become familiar with dealing with the following types of data:</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>mtcars</pre>
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Data Type</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">- <a href='#4' title=''>Numbers</a></td>
+<td align="left">integer (i.e. 1,2,3&#8230;), double (i.e. 1.5, 3.66)</td>
+</tr>
+<tr class="even">
+<td align="left">- <a href='#9' title=''>Character Strings</a></td>
+<td align="left">&quot;r&quot;, &quot;I attend UC&quot;, etc.</td>
+</tr>
+<tr class="odd">
+<td align="left">- Regular expressions</td>
+<td align="left">patterns within text strings</td>
+</tr>
+<tr class="even">
+<td align="left">- <a href='#14' title=''>Factors</a></td>
+<td align="left">nominal (male, female), ordinal (freshman, sophmore, junior), interval ($0-25, $26-50, $51-75)</td>
+</tr>
+<tr class="odd">
+<td align="left">- <a href='#20' title=''>Dates</a></td>
+<td align="left">calendar dates (i.e. 2016-08-06, 08/06/2016), weekdays, hours, etc.</td>
+</tr>
+<tr class="even">
+<td align="left">- <a href='#28' title=''>Logical</a></td>
+<td align="left"><code>TRUE</code>, <code>FALSE</code>, <code>any</code>, <code>all</code></td>
+</tr>
+</table>
 
-<pre >##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</pre>
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Numbers</h2></hgroup><article  id="numbers" class="smaller ">
 
-</article></slide><slide class=''><hgroup><h2>Built in Data Sets</h2></hgroup><article  id="built-in-data-sets-1" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Numbers: two types of numbers</h2></hgroup><article  id="numbers-two-types-of-numbers" class="smaller ">
 
-<ul>
-<li>R also has many convenient built-in character strings to be aware of</li>
-<li>Try these:</li>
-</ul>
+<p>Numeric data pimarily comes in two forms: integer &amp; double (double precision floating point)</p>
 
-<pre class = 'prettyprint lang-r'>letters
-LETTERS
-month.abb
-month.name
-state.abb
-state.division
-state.name
-state.region</pre>
+<pre class = 'prettyprint lang-r'># create a string of double-precision values
+dbl_var &lt;- c(1, 2.5, 4.5)  
+class(dbl_var)
+## [1] &quot;numeric&quot;
 
-<p><br></p>
+# placing an L after the values creates a string of integers
+int_var &lt;- c(1L, 6L, 10L)
+class(int_var)
+## [1] &quot;integer&quot;</pre>
 
-<h3>Note</h3>
+<p>We can coerce integers to doubles and vice versa with <code>as.double()</code> and <code>as.integer()</code></p>
 
-<ul>
-<li>to load any of these data sets/strings into your global environment: <code>data(&quot;name of data set&quot;)</code></li>
-<li>type <code>?name</code> to get more information about the built-in data</li>
-</ul>
+<pre class = 'prettyprint lang-r'>as.integer(dbl_var)
+## [1] 1 2 4
+
+int_to_dbl &lt;- as.double(int_var)
+class(int_to_dbl)
+## [1] &quot;numeric&quot;
+
+# Combining double and integer will automatically coerce to the simplest form (double)
+c(dbl_var, int_var)
+## [1]  1.0  2.5  4.5  1.0  6.0 10.0</pre>
+
+</article></slide><slide class=''><hgroup><h2>Numbers: comparing numbers</h2></hgroup><article  id="numbers-comparing-numbers" class="smaller ">
+
+<p>You&#39;ve already seen logical operators using <code>==, !=, &lt;, &lt;=, &gt;, &gt;=</code></p>
+
+<pre class = 'prettyprint lang-r'>x &lt;- c(4, 4, 9, 12)
+y &lt;- c(4, 4, 9, 12.00000008)
+
+x == y
+## [1]  TRUE  TRUE  TRUE FALSE</pre>
+
+<p>Can also test for <strong>exact equality</strong> with <code>identical()</code> and <strong>near equality</strong> with <code>all.equal()</code></p>
+
+<pre class = 'prettyprint lang-r'>z &lt;- c(4, 4, 9, 12)
+
+identical(x, y)
+## [1] FALSE
+identical(x, z)
+## [1] TRUE
+
+all.equal(x, y)
+## [1] TRUE</pre>
+
+</article></slide><slide class=''><hgroup><h2>Numbers: rounding</h2></hgroup><article  id="numbers-rounding" class="smaller ">
+
+<p>We can also round numbers multiple ways:</p>
+
+<pre class = 'prettyprint lang-r'>x &lt;- c(1, 1.35, 1.7, 2.05, 2.4, 2.75)
+
+# round to the nearest integer
+round(x)
+## [1] 1 1 2 2 2 3
+
+# round up
+ceiling(x)
+## [1] 1 2 2 3 3 3
+
+# round down
+floor(x)
+## [1] 1 1 1 2 2 2
+
+# round to a specified decimal
+round(x, digits = 1)
+## [1] 1.0 1.4 1.7 2.0 2.4 2.8</pre>
 
 </article></slide><slide class=''><hgroup><h2>Your Turn</h2></hgroup><article  id="your-turn" class="smaller ">
 
-<p><br> <br></p>
+<p><font size="6"> Import the <code>numbers-your-turn.csv</code> file in the data folder </font></p>
 
-<p><font size="10"> <code>1.</code> Load the <code>iris</code> data set</p>
+<p><br><br><br><br><br></p>
+
+<p><font size="6">1. Are the vectors <code>x</code> &amp; <code>y</code> equal? Exactly or approximately equal?</font><br><br> <font size="6">2. Are the vectors <code>y</code> &amp; <code>z</code> equal? Exactly or approximately equal?</font><br><br> <font size="6">3. Round <code>x</code> &amp; <code>y</code> numbers to the 4th digit</font><br><br> <font size="6">4. Are these vectors equal now?</font></p>
+
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Characters </h2><h3> &quot;Hello world!&quot;</h3></hgroup><article  id="characters-hello-world" class="smaller ">
+
+</article></slide><slide class=''><hgroup><h2>Characters: creating simple character strings</h2></hgroup><article  id="characters-creating-simple-character-strings" class="smaller ">
+
+<p>Create character strings using <code>&quot;&quot;</code></p>
+
+<pre class = 'prettyprint lang-r'>a &lt;- &quot;learning to create&quot;
+b &lt;- &quot;character strings&quot;</pre>
+
+<p>Combine character strings with <code>c</code>, <code>paste()</code> or <code>paste0</code></p>
+
+<pre class = 'prettyprint lang-r'># create a vector containing two elements - a and b
+c(a, b)
+## [1] &quot;learning to create&quot; &quot;character strings&quot;
+
+# create a vector containing one element - a and b combined
+paste(a, b)
+## [1] &quot;learning to create character strings&quot;
+
+# paste multiple strings
+paste(&quot;I&quot;, &quot;love&quot;, &quot;R&quot;)
+## [1] &quot;I love R&quot;
+
+# change the separator
+paste(&quot;I&quot;, &quot;love&quot;, &quot;R&quot;, sep = &quot;-&quot;)
+## [1] &quot;I-love-R&quot;
+
+# collapse space between characters
+paste0(&quot;I&quot;, &quot;love&quot;, &quot;R&quot;)
+## [1] &quot;IloveR&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Characters: test, conversion &amp; coercion</h2></hgroup><article  id="characters-test-conversion-coercion" class="smaller ">
+
+<p>Use <code>class()</code>, <code>mode()</code> and/or <code>is.character()</code> to assess the data type</p>
+
+<pre class = 'prettyprint lang-r'>a &lt;- &quot;Life of&quot;
+b &lt;- pi
+
+class(a)
+## [1] &quot;character&quot;
+
+mode(a)
+## [1] &quot;character&quot;
+
+is.character(pi)
+## [1] FALSE</pre>
+
+<p>Use <code>as.character()</code> to convert non-character to a character</p>
+
+<pre class = 'prettyprint lang-r'>as.character(pi)
+## [1] &quot;3.14159265358979&quot;</pre>
+
+<p>Combining characters and non-characters will coerce all inputs to a character</p>
+
+<pre class = 'prettyprint lang-r'>c(a, b)
+## [1] &quot;Life of&quot;          &quot;3.14159265358979&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Characters: summarizing</h2></hgroup><article  id="characters-summarizing" class="smaller ">
+
+<p>Use <code>length()</code> to count the number of elements (individual character strings) in a vector</p>
+
+<pre class = 'prettyprint lang-r'>length(&quot;How many elements are in this string?&quot;)
+## [1] 1
+
+length(c(&quot;How&quot;, &quot;many&quot;, &quot;elements&quot;, &quot;are&quot;, &quot;in&quot;, &quot;this&quot;, &quot;string?&quot;))
+## [1] 7</pre>
 
 <p><br></p>
 
-<p><code>2.</code> What is this data measuring? </font></p>
+<p>Use <code>nchar()</code> to count the number of characters in each element</p>
 
-</article></slide><slide class=''><hgroup><h2>Solution</h2></hgroup><article  id="solution" class="smaller ">
+<pre class = 'prettyprint lang-r'>nchar(&quot;How many characters are in this string?&quot;)
+## [1] 39
 
-<p><br> <br></p>
+nchar(c(&quot;How&quot;, &quot;many&quot;, &quot;characters&quot;, &quot;are&quot;, &quot;in&quot;, &quot;this&quot;, &quot;string?&quot;))
+## [1]  3  4 10  3  2  4  7</pre>
 
-<p><code>1.</code> Load the <code>iris</code> data set</p>
+</article></slide><slide class=''><hgroup><h2>Characters: manipulation</h2></hgroup><article  id="characters-manipulation" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>data(iris)</pre>
+<center>
+
+<blockquote>
+
+<font size="6"> Characters are becoming a key form of data which organizations are increasingly leveraging for business analytics </font>
+
+</blockquote>
+
+</center>
 
 <p><br></p>
 
-<p><code>2.</code> What is this data measuring?</p>
-
-<pre class = 'prettyprint lang-r'>?iris</pre>
-
-<p>Description from the help screen: &quot;This famous (Fisher&#39;s or Anderson&#39;s) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.&quot;</p>
-
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Importing Text Files</h2></hgroup><article  id="importing-text-files" class="smaller ">
-
-</article></slide><slide class=''><hgroup><h2>Importing Text Files </h2><h3> .csv .txt .tsv</h3></hgroup><article  id="importing-text-files-.csv-.txt-.tsv" class="smaller ">
+<ul>
+<li>Character manipulation (regex and text analysis) is a rich field; far more complex than we have time for</li>
+<li>More opportunities to learn
 
 <ul>
-<li>Text files are a popular way to hold and exchange tabular data</li>
-<li>Text file formats use <strong>delimiters</strong> to separate the different elements
-
-<ul>
-<li>.csv</li>
-<li>.txt</li>
-<li>.tsv</li>
-</ul></li>
-<li>These delimiters help us know what functions to use to read in the data</li>
-<li>I&#39;ll illustrate with the following files in the R-Bootcamp download file
-
-<ul>
-<li><code>mydata.csv</code></li>
-<li><code>mydata.txt</code></li>
-<li><code>mydata.tsv</code></li>
+<li><a href='http://uc-r.github.io/bana_datawrangling' title=''>Data Wrangling with R</a> class</li>
+<li><a href='http://uc-r.github.io/characters' title=''>Dealing with Characters</a> tutorial</li>
+<li><a href='http://uc-r.github.io/regex' title=''>Dealing with Regular Expressions</a> tutorial</li>
 </ul></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Importing Text Files </h2><h3> Base R</h3></hgroup><article  id="importing-text-files-base-r" class="smaller ">
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Factors </h2><h3> aka categorical variables</h3></hgroup><article  id="factors-aka-categorical-variables" class="smaller ">
 
-<p>Use <code>read.csv</code> for comma separated files (automatically sets the <code>sep = &quot;,&quot;</code>)</p>
+</article></slide><slide class=''><hgroup><h2>Factors: different from characters</h2></hgroup><article  id="factors-different-from-characters" class="smaller ">
 
-<pre class = 'prettyprint lang-r'>read.csv(&quot;data/mydata.csv&quot;)
-##   variable.1 variable.2 variable.3
-## 1         10       beer       TRUE
-## 2         25       wine       TRUE
-## 3          8     cheese      FALSE</pre>
-
-<p><br></p>
-
-<p>Use <code>read.delim</code> for tab delimited files (automatically sets the <code>sep = &quot;\t&quot;</code>)</p>
-
-<pre class = 'prettyprint lang-r'>read.delim(&quot;data/mydata.txt&quot;)
-##   variable.1 variable.2 variable.3
-## 1         10       beer       TRUE
-## 2         25       wine       TRUE
-## 3          8     cheese      FALSE</pre>
-
-</article></slide><slide class=''><hgroup><h2>Importing Text Files </h2><h3> Base R</h3></hgroup><article  id="importing-text-files-base-r-1" class="smaller ">
-
-<p>When importing data, save to a file by using the assignment operator:</p>
-
-<pre class = 'prettyprint lang-r'>mydata &lt;- read.delim(&quot;data/mydata.tsv&quot;)
-
-mydata
-##   variable.1 variable.2 variable.3
-## 1         10       beer       TRUE
-## 2         25       wine       TRUE
-## 3          8     cheese      FALSE</pre>
-
-<p><br></p>
+<p>Key Words : <strong>finite options</strong> and <strong>levels</strong></p>
 
 <ul>
-<li>You now have a data object in your global environment named <code>mydata</code></li>
-<li>View your data in a spreadsheet form:
+<li>nominal variables
 
 <ul>
-<li>clicking on the object in the global environment space or</li>
-<li>type <code>View(mydata)</code> in your console</li>
+<li>male, female</li>
+<li>brunnette, blonde, red, black</li>
+<li>Hispanic, Caucasion, Asian, African</li>
+</ul></li>
+<li>ordinal variables
+
+<ul>
+<li>slow, medium, fast</li>
+<li>freshman, sophomore, junior, senior</li>
+</ul></li>
+<li>interval variables
+
+<ul>
+<li>$1-100, $101-200, $201-300</li>
+<li>0-10, 11-20, 21-30</li>
 </ul></li>
 </ul>
+
+</article></slide><slide class=''><hgroup><h2>Factors: creating nominal factors</h2></hgroup><article  id="factors-creating-nominal-factors" class="smaller ">
+
+<p>Create nominal factors with <code>factor()</code></p>
+
+<pre class = 'prettyprint lang-r'>gender &lt;- c(&quot;male&quot;, &quot;female&quot;, &quot;female&quot;)
+
+class(gender)
+## [1] &quot;character&quot;
+
+gender2 &lt;- factor(gender)
+
+class(gender2)
+## [1] &quot;factor&quot;
+
+gender2
+## [1] male   female female
+## Levels: female male</pre>
+
+<p>set level preferences with <code>level</code> argument</p>
+
+<pre class = 'prettyprint lang-r'>factor(gender, levels = c(&quot;male&quot;, &quot;female&quot;))
+## [1] male   female female
+## Levels: male female</pre>
+
+</article></slide><slide class=''><hgroup><h2>Factors: creating ordered factors</h2></hgroup><article  id="factors-creating-ordered-factors" class="smaller ">
+
+<p>Create ordinal/interval factors with <code>ordered()</code>; set level preferences with <code>level</code> argument</p>
+
+<pre class = 'prettyprint lang-r'>age.range &lt;- c(&quot;18-24&quot;, &quot;25-34&quot;, &quot;35-44&quot;, &quot;45-54&quot;, &quot;55-64&quot;, &quot;65 or Above&quot;, &quot;Under 18&quot;)
+
+class(age.range)
+## [1] &quot;character&quot;
+
+# turn x into an ordered factor - levels default to the order of the data
+age.range2 &lt;- ordered(age.range)
+
+class(age.range2)
+## [1] &quot;ordered&quot; &quot;factor&quot;
+
+age.range2
+## [1] 18-24       25-34       35-44       45-54       55-64       65 or Above
+## [7] Under 18   
+## 7 Levels: 18-24 &lt; 25-34 &lt; 35-44 &lt; 45-54 &lt; 55-64 &lt; ... &lt; Under 18</pre>
+
+<p>set level preferences with <code>level</code> argument</p>
+
+<pre class = 'prettyprint lang-r'>ordered(age.range, levels = c(&quot;Under 18&quot;, &quot;18-24&quot;, &quot;25-34&quot;, &quot;35-44&quot;, &quot;45-54&quot;, &quot;55-64&quot;, &quot;65 or Above&quot;))
+## [1] 18-24       25-34       35-44       45-54       55-64       65 or Above
+## [7] Under 18   
+## 7 Levels: Under 18 &lt; 18-24 &lt; 25-34 &lt; 35-44 &lt; 45-54 &lt; ... &lt; 65 or Above</pre>
+
+</article></slide><slide class=''><hgroup><h2>Factors: summarizing</h2></hgroup><article  id="factors-summarizing" class="smaller ">
+
+<p>If you want to know the levels that exist in your factor variable use <code>levels()</code></p>
+
+<pre class = 'prettyprint lang-r'>facebook &lt;- read.delim(&quot;data/facebook.tsv&quot;)
+
+levels(facebook$gender)
+## [1] &quot;female&quot; &quot;male&quot;</pre>
+
+<p><br></p>
+
+<p>We can use the <code>table()</code> function to quickly assess the counts of each level</p>
+
+<pre class = 'prettyprint lang-r'>table(facebook$gender)
+## 
+## female   male 
+##  40254  58574</pre>
 
 </article></slide><slide class=''><hgroup><h2>Your Turn</h2></hgroup><article  id="your-turn-1" class="smaller ">
 
-<p><br> <br></p>
+<p><font size="6"> Import the <code>reddit.csv</code> file in the data folder </font></p>
 
-<p><font size="10"> <code>1.</code> Read in the <code>facebook.tsv</code> file </font></p>
+<p><br><br><br></p>
 
-<p><br></p>
+<p><font size="6">1. What are the levels for the <code>income.range</code> variable?</font><br><br><br> <font size="6">2. Properly order the levels for <code>income.range</code>.</font><br><br><br> <font size="6">3. What are the counts for each level?</font></p>
 
-<p><font size="10"> <code>2.</code> Save it as an object titled <code>facebook</code> </font></p>
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Dates </h2><h3> The neglected variable</h3></hgroup><article  id="dates-the-neglected-variable" class="smaller ">
 
-<p><br></p>
-
-<p><font size="10"> <code>3.</code> Take a peek at what this data looks like </font></p>
-
-</article></slide><slide class=''><hgroup><h2>Solution</h2></hgroup><article  id="solution-1" class="smaller ">
-
-<p><br> <br></p>
-
-<p><code>1</code> &amp; <code>2</code>: Read in the <code>facebook.tsv</code> file and save as <code>facebook</code></p>
-
-<pre class = 'prettyprint lang-r'>facebook &lt;- read.delim(&quot;data/facebook.tsv&quot;)</pre>
-
-<p><br></p>
-
-<p><code>3.</code>: Take a peek at what this data looks like</p>
-
-<pre class = 'prettyprint lang-r'>View(facebook)</pre>
-
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Importing Excel Files</h2></hgroup><article  id="importing-excel-files" class="smaller ">
-
-</article></slide><slide class=''><hgroup><h2>Importing Excel Files</h2></hgroup><article  id="importing-excel-files-1" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Dates: creating</h2></hgroup><article  id="dates-creating" class="smaller ">
 
 <ul>
-<li>Excel is still the spreadsheet software of choice</li>
-<li>Base R does not have an Excel importing function but we can use the <a href='https://cran.rstudio.com/web/packages/readxl/' title=''><code>readxl</code></a> package</li>
+<li>The <code>lubridate</code> package makes working with dates extremely easy</li>
+<li>To create a date variable we simply need to know the year-month-day order</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'># if you haven&#39;t installed the readxl package run the following line (minus hashtag)
-# install.packages(&quot;readxl&quot;)
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Order of elements in date-time</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>ymd()</code></td>
+<td align="left">year, month, day</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ydm()</code></td>
+<td align="left">year, day, month</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mdy()</code></td>
+<td align="left">month, day, year</td>
+</tr>
+<tr class="even">
+<td align="left"><code>dmy()</code></td>
+<td align="left">day, month, year</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>hm()</code></td>
+<td align="left">hour, minute</td>
+</tr>
+<tr class="even">
+<td align="left"><code>hms()</code></td>
+<td align="left">hour, minute, second</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ymd_hms()</code></td>
+<td align="left">year, month, day, hour, minute, second</td>
+</tr>
+</table>
 
-library(readxl)
-
-read_excel(&quot;data/mydata.xlsx&quot;, sheet = &quot;Sheet5&quot;)
-##   variable 1 variable 2 variable 3 variable 4          variable 5
-## 1         10       beer          1      42328 2015-11-20 13:30:00
-## 2         25       wine          1         NA 2015-11-21 16:30:00
-## 3          8       &lt;NA&gt;          0      42330 2015-11-22 14:45:00</pre>
+</article></slide><slide class=''><hgroup><h2>Dates: creating</h2></hgroup><article  id="dates-creating-1" class="smaller ">
 
 <ul>
-<li>Benefits of <code>readxl</code>
-
-<ul>
-<li>recognizes date and time variables</li>
-<li>keeps text variables as characters rather than factors (more to come on this)</li>
-<li>does not collapse variable names</li>
-<li>read more about <code>readxl</code> capabilities <a href='' title=''>here</a></li>
-</ul></li>
-<li><code>xlsx</code> is an alternative package for reading in Excel files</li>
+<li>The <code>lubridate</code> package makes working with dates extremely easy</li>
+<li>To create a date variable we simply need to know the year-month-day order</li>
 </ul>
+
+<pre class = 'prettyprint lang-r'>dates &lt;- c(&quot;2015-07-01&quot;, &quot;2015-08-01&quot;, &quot;2015-09-01&quot;)
+
+class(dates)
+## [1] &quot;character&quot;</pre>
+
+<p>Convert this character string to date format with <code>lubridate</code>&#39;s <code>ymd()</code> function</p>
+
+<pre class = 'prettyprint lang-r'># install.packages(&quot;lubridate&quot;) # run this line if you have not yet installed lubridate
+library(lubridate)
+
+dates2 &lt;- ymd(dates)
+
+class(dates2)
+## [1] &quot;Date&quot;
+
+dates2
+## [1] &quot;2015-07-01&quot; &quot;2015-08-01&quot; &quot;2015-09-01&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Dates: create by merging</h2></hgroup><article  id="dates-create-by-merging" class="smaller ">
+
+<ul>
+<li>Sometimes your date data are collected in separate elements</li>
+<li>To convert these separate data into one date object incorporate the <code>ISOdate()</code> function:</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>yr &lt;- c(&quot;2012&quot;, &quot;2013&quot;, &quot;2014&quot;, &quot;2015&quot;) 
+mo &lt;- c(&quot;1&quot;, &quot;5&quot;, &quot;7&quot;, &quot;2&quot;)
+day &lt;- c(&quot;02&quot;, &quot;22&quot;, &quot;15&quot;, &quot;28&quot;)
+
+# ISOdate converts to a POSIXct object
+full_date &lt;- ISOdate(year = yr, month = mo, day = day)
+full_date
+## [1] &quot;2012-01-02 12:00:00 GMT&quot; &quot;2013-05-22 12:00:00 GMT&quot;
+## [3] &quot;2014-07-15 12:00:00 GMT&quot; &quot;2015-02-28 12:00:00 GMT&quot;</pre>
+
+<p><br></p>
+
+<p>We can truncate the unused time data by converting with <code>as.Date()</code></p>
+
+<pre class = 'prettyprint lang-r'>as.Date(full_date)
+## [1] &quot;2012-01-02&quot; &quot;2013-05-22&quot; &quot;2014-07-15&quot; &quot;2015-02-28&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Dates: extract &amp; manipulate</h2></hgroup><article  id="dates-extract-manipulate" class="smaller ">
+
+<p>We can also easily extract components of dates using <code>lubridate</code></p>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Date-time element to extract</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>year()</code></td>
+<td align="left">Year</td>
+</tr>
+<tr class="even">
+<td align="left"><code>month()</code></td>
+<td align="left">Month</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>week()</code></td>
+<td align="left">Week</td>
+</tr>
+<tr class="even">
+<td align="left"><code>yday()</code></td>
+<td align="left">Day of year</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mday()</code></td>
+<td align="left">Day of month</td>
+</tr>
+<tr class="even">
+<td align="left"><code>wday()</code></td>
+<td align="left">Day of week</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>hour()</code></td>
+<td align="left">Hour</td>
+</tr>
+<tr class="even">
+<td align="left"><code>minute()</code></td>
+<td align="left">Minute</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>second()</code></td>
+<td align="left">Second</td>
+</tr>
+<tr class="even">
+<td align="left"><code>tz()</code></td>
+<td align="left">Time zone</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Dates: extract &amp; manipulate</h2></hgroup><article  id="dates-extract-manipulate-1" class="smaller ">
+
+<p>We can also easily extract components of dates using <code>lubridate</code></p>
+
+<p>Extract time components:</p>
+
+<pre class = 'prettyprint lang-r'>year(full_date)
+## [1] 2012 2013 2014 2015
+
+week(full_date)
+## [1]  1 21 28  9
+
+wday(full_date, label = TRUE)
+## [1] Mon  Wed  Tues Sat 
+## Levels: Sun &lt; Mon &lt; Tues &lt; Wed &lt; Thurs &lt; Fri &lt; Sat</pre>
+
+<p>Manipulate or change date-time components by using the function and then assignment</p>
+
+<pre class = 'prettyprint lang-r'>as.Date(full_date)
+## [1] &quot;2012-01-02&quot; &quot;2013-05-22&quot; &quot;2014-07-15&quot; &quot;2015-02-28&quot;
+
+year(full_date) &lt;- c(2014, 2015, 2015, 2016)
+
+as.Date(full_date)
+## [1] &quot;2014-01-02&quot; &quot;2015-05-22&quot; &quot;2015-07-15&quot; &quot;2016-02-28&quot;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Dates: summarizing</h2></hgroup><article  id="dates-summarizing" class="smaller ">
+
+<ul>
+<li>We can also do regular statistical summaries of date objects</li>
+<li>Illustrate with the <code>lakers</code> data set that comes with the <code>lubridate</code> package</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>dates &lt;- ymd(lakers$date)
+
+min(dates)
+## [1] &quot;2008-10-28&quot;
+
+max(dates)
+## [1] &quot;2009-04-14&quot;
+
+mean(dates)
+## [1] &quot;2009-01-22&quot;
+
+median(dates)
+## [1] &quot;2009-01-21&quot;
+
+summary(dates)
+##         Min.      1st Qu.       Median         Mean      3rd Qu. 
+## &quot;2008-10-28&quot; &quot;2008-12-10&quot; &quot;2009-01-21&quot; &quot;2009-01-22&quot; &quot;2009-03-09&quot; 
+##         Max. 
+## &quot;2009-04-14&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2>Your Turn</h2></hgroup><article  id="your-turn-2" class="smaller ">
 
-<p><br></p>
+<p><font size="6"> Import the <code>facebook.tsv</code> file in the data folder </font></p>
 
-<p><font size="7"><code>1.</code> Read in the spreadsheet titled</font><br><br> <font size="6">        <code>3. Median HH income, metro</code> in the <code>PEW Middle</code> <br>        <code>Class Data.xlsx</code> file</font><br><br><br> <font size="7"><code>2.</code> Save it as an object titled <code>pew</code></font><br><br><br> <font size="7"><code>3.</code> Take a peek at what this data looks like</font></p>
+<p><br><br><br></p>
 
-<p><br> <br></p>
+<p><font size="6"> 1. Create a new date variable that combines the <code>dob_day</code>,<br>     <code>dob_month</code>, &amp; <code>dob_year</code> variables. </font><br><br><br> <font size="6"> 2. What is the <code>min</code>, <code>max</code>, <code>mean</code>, and <code>median</code> date of births in<br>     this data frame? </font><br><br><br><br><br></p>
 
-<p><strong>Hint:</strong> You will need to skip 5 lines ☛ check out the help file on <code>read_excel</code> to do this</p>
+<p><strong>NOTE:</strong> If you save the new variable as <code>facebook$dob &lt;- _____________</code> it will add this new variable to the facebook data frame</p>
 
-</article></slide><slide class=''><hgroup><h2>Solution</h2></hgroup><article  id="solution-2" class="smaller ">
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Logical </h2><h3> Boolean as in George Boole</h3></hgroup><article  id="logical-boolean-as-in-george-boole" class="smaller ">
 
-<p><br> <br></p>
+</article></slide><slide class=''><hgroup><h2>Logical: the basics</h2></hgroup><article  id="logical-the-basics" class="smaller ">
 
-<p><code>1</code> &amp; <code>2</code>: Read in the <code>.xlsx</code> file and save as <code>pew</code></p>
+<p>We already saw how we can get <code>TRUE</code>/<code>FALSE</code> responses from comparing elements</p>
 
-<pre class = 'prettyprint lang-r'>pew &lt;- read_excel(&quot;data/PEW Middle Class Data.xlsx&quot;, sheet = &quot;3. Median HH income, metro&quot;, skip = 5)</pre>
+<pre class = 'prettyprint lang-r'>x &lt;- c(4, 4, 9, 12, 2, 2, 10)
+y &lt;- c(4, 5, 9, 13, 2, 1, 10)
 
-<p><br></p>
+x == y
+## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE</pre>
 
-<p><code>3</code>: Take a peek at what this data looks like</p>
+<p>This is just vector containing logical elements</p>
 
-<pre class = 'prettyprint lang-r'>View(pew)</pre>
+<pre class = 'prettyprint lang-r'>z &lt;- x == y
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Scraping Online Files</h2></hgroup><article  id="scraping-online-files" class="smaller ">
+class(z)
+## [1] &quot;logical&quot;</pre>
 
-</article></slide><slide class=''><hgroup><h2>Scraping Online Files </h2><h3> Tabular files</h3></hgroup><article  id="scraping-online-files-tabular-files" class="smaller ">
+<p>We can assess if any or all the elements are <code>TRUE</code></p>
 
-<ul>
-<li>Dense subject with <em>LOTS</em> to learn</li>
-<li>We&#39;ll only focus on reading in tabular and Excel files stored online</li>
-<li>For more info regarding &quot;real web scraping&quot; see the tutorial at: UC-R.github.io/&#8230;</li>
-</ul>
+<pre class = 'prettyprint lang-r'>any(z)
+## [1] TRUE
 
-<p><br></p>
+all(z)
+## [1] FALSE</pre>
 
-<p>Let&#39;s download some data from <a href='https://www.data.gov/metrics' title=''>https://www.data.gov/metrics</a>:</p>
-
-<pre class = 'prettyprint lang-r'># the url for the online CSV
-url &lt;- &quot;https://www.data.gov/media/federal-agency-participation.csv&quot; 
-
-# use read.csv to import
-data_gov &lt;- read.csv(url, stringsAsFactors = FALSE)
-
-View(data_gov)</pre>
-
-</article></slide><slide class=''><hgroup><h2>Scraping Online Files </h2><h3> Excel files</h3></hgroup><article  id="scraping-online-files-excel-files" class="smaller ">
-
-<ul>
-<li>Scraping online Excel files follows a similar process</li>
-<li><code>gdata</code> package is particular easy to use</li>
-</ul>
-
-<p><br></p>
-
-<p>Let&#39;s download some data from <a href='http://catalog.data.gov/dataset/fair-market-rents-for-the-section-8-housing-assistance-payments-program/resource/2d33555e-5d21-4baf-84a2-e4fb3aed0807' title=''>Fair Market Rents for Section 8 Housing</a>:</p>
-
-<pre class = 'prettyprint lang-r'>library(gdata)
-
-url &lt;- &quot;http://www.huduser.org/portal/datasets/fmr/fmr2015f/FY2015F_4050_Final.xls&quot;
-
-# use read.xls to import
-rents &lt;- read.xls(url)
-
-View(data_gov)</pre>
-
-</article></slide><slide class=''><hgroup><h2>Your Turn</h2></hgroup><article  id="your-turn-3" class="smaller ">
-
-<p><br> <br></p>
-
-<p><font size="7"> <code>1.</code> Download the file stored at:<br> </font></p>
-
-<p><font size="5"> <code>https://bradleyboehmke.github.io/public/data/reddit.csv</code> </font></p>
-
-<p><br></p>
-
-<p><font size="7"> <code>2.</code> Save it as an object titled <code>reddit</code> </font></p>
-
-<p><br></p>
-
-<p><font size="7"> <code>3.</code> Take a peek at what this data looks like </font></p>
-
-</article></slide><slide class=''><hgroup><h2>Solution</h2></hgroup><article  id="solution-3" class="smaller ">
-
-<p><br> <br></p>
-
-<p><code>1.</code> Download the file stored at: bradleyboehmke.github.io/public/data/reddit.csv</p>
-
-<p><code>2.</code> Save it as an object titled <code>reddit</code></p>
-
-<pre class = 'prettyprint lang-r'>url &lt;- &quot;https://bradleyboehmke.github.io/public/data/reddit.csv&quot;
-
-reddit &lt;- read.csv(url)</pre>
-
-<p><br></p>
-
-<p><code>3.</code> Take a peek at what this data looks like</p>
-
-<pre class = 'prettyprint lang-r'>View(reddit)</pre>
-
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Key Things to Remember</h2></hgroup><article  id="key-things-to-remember" class="smaller ">
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Key Things to Remember</h2></hgroup><article  id="key-things-to-remember-1" class="smaller ">
 
 </article></slide><slide class=''><hgroup><h2>Remember These Functions!</h2></hgroup><article  id="remember-these-functions" class="smaller ">
 
@@ -456,32 +681,69 @@ reddit &lt;- read.csv(url)</pre>
 <th align="left">Description</th>
 </tr>
 <tr class="odd">
-<td align="left"><code>data()</code></td>
-<td align="left">access built-in data sets</td>
+<td align="left"><code>as.double()</code>, <code>as.integer()</code></td>
+<td align="left">coerce to double floating point or integer numbers</td>
 </tr>
 <tr class="even">
-<td align="left"><code>?</code></td>
-<td align="left">will provide you information regarding built-in data (i.e. <code>?mtcars</code>)</td>
+<td align="left"><code>identical()</code>, <code>all.equal()</code></td>
+<td align="left">test for exact and near equality</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>read.csv()</code></td>
-<td align="left">base R function for reading in .csv files (can also be used to read in a .csv file stored online)</td>
+<td align="left"><code>round()</code>, <code>ceiling()</code>, <code>floor()</code></td>
+<td align="left">round numbers</td>
 </tr>
 <tr class="even">
-<td align="left"><code>read.delim()</code></td>
-<td align="left">base R function for reading in .txt and .tsv files</td>
+<td align="left"><code>c()</code>, <code>paste()</code>, <code>paste0()</code></td>
+<td align="left">combine character strings</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>read_excel()</code></td>
-<td align="left">imports Excel data (provided by the <code>readxl</code> package)</td>
+<td align="left"><code>as.character()</code></td>
+<td align="left">coerce non-character to a character</td>
 </tr>
 <tr class="even">
-<td align="left"><code>read.xls()</code></td>
-<td align="left">imports Excel data stored online (provided by the <code>gdata</code> package)</td>
+<td align="left"><code>nchar()</code></td>
+<td align="left">count the number of characters in each element</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>View()</code></td>
-<td align="left">opens a spreadsheet-style data viewer</td>
+<td align="left"><code>factor()</code>, <code>ordered()</code></td>
+<td align="left">create or coerce to factor variables</td>
+</tr>
+<tr class="even">
+<td align="left"><code>levels()</code></td>
+<td align="left">assess the levels of a factor</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>table()</code></td>
+<td align="left">get the counts of each level</td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Remember These Functions!</h2></hgroup><article  id="remember-these-functions-1" class="smaller ">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Operator/Function</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>ymd()</code>, <code>mdy()</code>, <code>hm()</code>, etc</td>
+<td align="left"><code>lubridate</code>: create or convert to date-time variable</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Isodate()</code></td>
+<td align="left">create date variable by mergine separate date components</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>as.Date()</code></td>
+<td align="left">truncate date-time variable to just date variable</td>
+</tr>
+<tr class="even">
+<td align="left"><code>year()</code>, <code>week()</code>, etc</td>
+<td align="left"><code>lubridate</code>: extract individual date components</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>any()</code>, <code>all()</code></td>
+<td align="left">assess if any or all elements are <code>TRUE</code></td>
 </tr>
 </table>
 
